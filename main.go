@@ -1,11 +1,10 @@
 package main
 
-import ()
-
 func main() {
 	todos := Todos{}
-	todos.add("Buy milk")
-	todos.add("Running")
-	todos.toggle(0)
+	storage := NewStorage[Todos]("todos.json")
+	storage.Load(&todos)
+	todos.add("Coding")
 	todos.print()
+	storage.Save(todos)
 }
